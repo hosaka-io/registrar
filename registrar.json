@@ -1,0 +1,7 @@
+{
+    "id" : "7e7bad32-cd8f-46ac-8c74-b70f0196e7e5",
+    "parent": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+    "entity_type": "service",
+    "name": "registrar",
+    "description": "Service Registrar"
+}

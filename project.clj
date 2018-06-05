@@ -1,6 +1,6 @@
 (defproject io.hosaka/registrar "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Service Registrar"
+  :url "https://github.com/hosaka-io/registrar"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repositories ^:replace [["releases" "https://artifactory.i.hosaka.io/artifactory/libs-release"]
@@ -9,7 +9,7 @@
                  [org.clojure/core.cache "0.7.1"]
                  [org.clojure/tools.nrepl "0.2.13"]
 
-                 [io.hosaka/common "1.0.0"]
+                 [io.hosaka/common "1.2.1"]
 
                  [buddy/buddy-core "1.5.0.x"]
 
