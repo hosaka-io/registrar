@@ -1,5 +1,6 @@
 (ns io.hosaka.registrar.user
   (:require [com.stuartsierra.component :as component]
+            [io.hosaka.common.util :refer [get-port]]
             [clojure.tools.logging :as log]
             [clojure.core.cache :as cache]
             [clojure.java.io :refer [reader]]
@@ -21,8 +22,10 @@
     (assoc this
            :user-cache nil)))
 
-(defn new-user [env]
-  (map->User {:env (select-keys env [:user-cache-ttl :user-url])}))
+(defn new-user [{:keys [user-cache-ttl user-url]}]
+  (if-let [user-cache-ttl (get-port user-cache-ttl)]
+    (map->User {:env {:user-cache-ttl user-cache-ttl :user-url user-url}})
+    (throw (Exception. "Invalid user-cache-ttl"))))
 
 (defn parse-stream [stream]
   (with-open [rdr (reader stream)]

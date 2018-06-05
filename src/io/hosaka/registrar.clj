@@ -7,6 +7,7 @@
             [io.hosaka.registrar.handler :refer [new-handler]]
             [io.hosaka.registrar.user :refer [new-user]]
             [io.hosaka.registrar.orchestrator :refer [new-orchestrator]]
+            [io.hosaka.common.util :refer [get-port]]
             [io.hosaka.common.db :refer [new-database]]
             [io.hosaka.common.db.health :refer [new-health]]
             [io.hosaka.common.server :refer [new-server]])
@@ -30,7 +31,7 @@
     (reset! system (init-system env))
 
     (swap! system component/start)
-    (reset! repl (if-let [nrepl-port (:nrepl-port env)] (nrepl/start-server :port nrepl-port) nil))
+    (reset! repl (if-let [nrepl-port (get-port (:nrepl-port env))] (nrepl/start-server :port nrepl-port) nil))
     (log/info "Registrar Service booted")
     (deref semaphore)
     (log/info "Registrar Service going down")
