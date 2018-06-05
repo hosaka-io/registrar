@@ -44,9 +44,7 @@
                       {:produces "application/json"
                        :response (partial get-entity-by-id orchestrator)}}})]
     ["health"
-     (yada/resource {:methods {:get {:response (secure user
-                                                       #{"REGISTRAR_GET_ALL_ENTITIES"}
-                                                       (partial get-db-health health))
+     (yada/resource {:methods {:get {:response (partial get-db-health health)
                                      :produces "application/json"}}})]
 
     ]])
